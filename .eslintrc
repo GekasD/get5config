@@ -1,0 +1,54 @@
+{
+    "env": { "es2021": true, "node": true },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": { "ecmaVersion": "latest", "sourceType": "module" },
+    "plugins": ["@typescript-eslint"],
+
+    "ignorePatterns": ["/build/*"],
+
+    "rules": {
+        "indent": ["error", "tab"],
+        "quotes": ["error", "single"],
+
+        "require-await": "warn",
+
+        // Warn about unused variables
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "warn",
+
+        // Spacing
+        "array-bracket-spacing": ["error", "never"],
+        "comma-spacing": "error",
+
+        "space-infix-ops": "error",
+
+        "object-curly-spacing": "off",
+        "@typescript-eslint/object-curly-spacing": ["error", "always"],
+
+        // Require semicolons
+        "semi": "off",
+        "@typescript-eslint/semi": ["error", "always"],
+
+        // Non null assertion
+        "@typescript-eslint/no-non-null-assertion": "off",
+
+        // Require semis at the end of interface/type members 
+        "@typescript-eslint/member-delimiter-style": ["error", {
+            "multiline": {
+                "delimiter": "semi",
+                "requireLast": true
+            },
+            "singleline": {
+                "delimiter": "semi",
+                "requireLast": false
+            },
+            "multilineDetection": "brackets"
+        }],
+
+        "@typescript-eslint/explicit-function-return-type": "error"
+    }
+}

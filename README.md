@@ -42,7 +42,6 @@ const get5Config = new Get5Config()
 const data = JSON.stringify(get5Config.toJSON(), null, 4);
 fs.writeFileSync('examplematch.json', data);
 ```
-### Documentation
-There is an automatically generated documentation on each method and property [here]()
+
 ### More information
 For more information on what each property does you can read the [get5 readme](https://github.com/splewis/get5#match-schema)

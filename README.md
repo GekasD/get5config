@@ -12,7 +12,7 @@ import fs from 'fs';
 
 // Construct the get5 config
 const get5Config = new Get5Config()
-    .setSkipVeto()
+	.setSkipVeto()
 	.setSideType('always_knife')
 	.setMaps(['de_vertigo', 'de_nuke', 'de_mirage'])
 	.setTeams({

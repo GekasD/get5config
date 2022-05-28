@@ -6,6 +6,7 @@
 A simple NodeJS module that helps in creating [get5 match configs](https://github.com/splewis/get5#match-schema) programmatically through JavaScript or TypeScript.
 
 ### Example usage
+
 ```js
 import Get5Config from 'get5config';
 import fs from 'fs';
@@ -43,5 +44,41 @@ const data = JSON.stringify(get5Config.toJSON(), null, 4);
 fs.writeFileSync('examplematch.json', data);
 ```
 
+#### Output on examplematch.json
+
+```json
+{
+    "skip_veto": true,
+    "side_type": "always_knife",
+    "maplist": [
+        "de_vertigo",
+        "de_nuke",
+        "de_mirage"
+    ],
+    "team1": {
+        "name": "Ninjas In Pyjamas",
+        "players": {
+            "STEAM_0:1:36953343": "REZ",
+            "STEAM_0:0:87806535": "Plopski",
+            "STEAM_0:0:63340111": "hampus",
+            "STEAM_0:0:929823": "es3tag",
+            "STEAM_0:1:89281373": "Brollan"
+        }
+    },
+    "team2": {
+        "name": "FaZe Clan",
+        "players": {
+            "STEAM_0:1:18542739": "rain",
+            "STEAM_0:0:120677381": "broky",
+            "STEAM_0:1:27994738": "Twistzz",
+            "STEAM_0:1:14582262": "karrigan",
+            "STEAM_0:0:15503295": "ropz"
+        }
+    }
+}
+```
+
+As you can see above the general intended use case is creating the object by using various methods, and then calling `.toJSON()` which will validate all the fields and construct an object that is using the [get5 JSON format](https://github.com/splewis/get5/blob/master/configs/get5/example_match.json).
+
 ### More information
-For more information on what each property does you can read the [get5 readme](https://github.com/splewis/get5#match-schema)
+For more information on what each property does you can read the [get5 readme](https://github.com/splewis/get5#match-schema).

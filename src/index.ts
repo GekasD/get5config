@@ -123,7 +123,6 @@ export default class Get5Config {
 	/**
      * Adds CVARS that will me executed when the config loads or on each map start (for example hostname "Match server #1") 
      * @param cvars 
-     * @returns 
      */
 	public addCvars(cvars: Get5Cvar[]): this {
 		this.cvars.push(...cvars);

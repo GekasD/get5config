@@ -45,7 +45,13 @@ export interface Get5Team {
 }
 
 export interface Get5Player {
+    /**
+     * The player's SteamID, can be any valid SteamID type (SteamID64 etc)
+     */
     steamId: string;
+    /**
+     * The username that will be put on the player when he joins the server, useful for consistent naming across different platforms.
+     */
     username?: string;
 }
 

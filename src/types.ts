@@ -34,11 +34,11 @@ export interface Get5Teams {
     /**
      * The first team (team1)
      */
-    a: Get5Team;
+    team1: Get5Team;
     /**
      * The second team (team2)
      */
-    b: Get5Team;
+    team2: Get5Team;
 }
 
 export interface Get5Team {

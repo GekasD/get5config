@@ -1,9 +1,9 @@
-import type { Get5Teams, Get5Map, Get5Cvar, Get5TeamType, Get5SideType, Get5MatchConfigJSON, Get5MatchConfigTeam, StringKVObject } from './types';
+import type { Get5Teams, Get5Map, Get5Cvar, Get5TeamType, Get5SideType, Get5MatchConfigJSON, Get5MatchConfigTeam, StringKVObject, Get5Player } from './types';
 import SteamID from 'steamid';
 
 export default class Get5Config {
 	matchId?: string;
-	teams?: Get5Teams;
+	teams: Get5Teams = { team1: { players: [] }, team2: { players: [] } };
 	seriesSize?: number;
 	maps: Get5Map[] = [];
 	spectators: string[] = [];
@@ -76,9 +76,28 @@ export default class Get5Config {
      * @param teams The teams that will be set
      */
 	public setTeams(teams: Get5Teams): this {
-		if (teams.a.players.length === 0) throw new Error('Team 1 has no players!');
-		if (teams.b.players.length === 0) throw new Error('Team 2 has no players!');
+		if (teams.team1.players.length === 0) throw new Error('Team 1 has no players!');
+		if (teams.team2.players.length === 0) throw new Error('Team 2 has no players!');
 		this.teams = teams;
+		return this;
+	}
+
+	/**
+	 * Adds a player to team1
+	 * @param player The player to add to the team
+	 */
+	public addPlayerToTeam1(player: Get5Player): this {
+		this.teams.team1.players.push(player);
+		return this;
+	}
+
+	/**
+	 * Adds a player to team2
+	 * @param player 
+	 * @returns 
+	 */
+	public addPlayerToTeam2(player: Get5Player): this {
+		this.teams.team2.players.push(player);
 		return this;
 	}
 
@@ -178,43 +197,43 @@ export default class Get5Config {
      * Validates all fields and creates a valid object that get5 can load
      */
 	public toJSON(): Get5MatchConfigJSON {
-		// Make sure the teams are not undefined
-		if (!this.teams) throw new Error('This field is required');
+		// Make sure the teams aren't empty
+		if (this.teams.team1.players.length < 1 || this.teams.team2.players.length < 1) throw new Error('Both teams need at least 1 player');
 
 		// Validate each player's SteamID
-		for (const player of [...this.teams.a.players, ...this.teams.b.players]) {
+		for (const player of [...this.teams.team1.players, ...this.teams.team2.players]) {
 			const sid = new SteamID(player.steamId);
 			if (!sid.isValidIndividual()) throw new Error('The SteamID provided is not a valid individual SteamID');
 		}
 
 		// Validate players per team, if it has been set manually
 		if (this.playersPerTeam) {
-			const team1Length = this.teams.a.players.length;
-			const team2Length = this.teams.b.players.length;
+			const team1Length = this.teams.team1.players.length;
+			const team2Length = this.teams.team2.players.length;
 			if (this.playersPerTeam < team1Length || this.playersPerTeam < team2Length) throw new Error('Players per team property cannot be smaller than the amount of players in a team'); 
 		}
 
 		// Convert JS developer friendly players to the JSON format get5 uses
 		const team1Players: StringKVObject = {};
-		for (const player of this.teams.a.players) {
+		for (const player of this.teams.team1.players) {
 			team1Players[player.steamId] = player.username ? player.username : '';
 		}
 		const team2Players: StringKVObject = {};
-		for (const player of this.teams.b.players) {
+		for (const player of this.teams.team2.players) {
 			team2Players[player.steamId] = player.username ? player.username : '';
 		}
 		const team1: Get5MatchConfigTeam = {
-			name: this.teams.a.name,
-			tag: this.teams.a.tag,
-			flag: this.teams.a.flag,
-			logo: this.teams.a.logo,
+			name: this.teams.team1.name,
+			tag: this.teams.team2.tag,
+			flag: this.teams.team1.flag,
+			logo: this.teams.team2.logo,
 			players: team1Players
 		};
 		const team2: Get5MatchConfigTeam = {
-			name: this.teams.b.name,
-			tag: this.teams.b.tag,
-			flag: this.teams.b.flag,
-			logo: this.teams.b.logo,
+			name: this.teams.team1.name,
+			tag: this.teams.team2.tag,
+			flag: this.teams.team1.flag,
+			logo: this.teams.team2.logo,
 			players: team2Players
 		};
 

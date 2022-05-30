@@ -3,7 +3,7 @@
 <a href="https://www.npmjs.com/package/get5config"><img src="https://img.shields.io/npm/v/get5config.svg?maxAge=3600" alt="npm version" /></a>
 <a href="https://www.npmjs.com/package/get5config"><img src="https://img.shields.io/npm/l/get5config.svg?maxAge=3600" alt="npm licence" /></a>
 <a href="https://www.npmjs.com/package/get5config"><img src="https://img.shields.io/npm/dt/get5config.svg?maxAge=3600" alt="npm downloads" /></a>
-<a href="https://www.npmjs.com/package/get5config"><img src="https://img.shields.io/github/repo-size/GekasD/get5config.svg?maxAge=3600" alt="github reposize" /></a>
+<a href="https://github.com/GekasD/get5config"><img src="https://img.shields.io/github/repo-size/GekasD/get5config.svg?maxAge=3600" alt="github reposize" /></a>
 
 A simple NodeJS module that helps in creating [get5 match configs](https://github.com/splewis/get5#match-schema) programmatically through JavaScript or TypeScript.
 

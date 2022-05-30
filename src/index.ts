@@ -1,4 +1,4 @@
-import type { Get5Teams, Get5Map, Get5Cvar, Get5TeamType, Get5SideType, Get5MatchConfigJSON, Get5PlayersWithEnforcedNames, Get5MatchConfigTeam, Get5MatchConfigCvars } from './types';
+import type { Get5Teams, Get5Map, Get5Cvar, Get5TeamType, Get5SideType, Get5MatchConfigJSON, Get5MatchConfigTeam, StringKVObject } from './types';
 import SteamID from 'steamid';
 
 export default class Get5Config {
@@ -195,11 +195,11 @@ export default class Get5Config {
 		}
 
 		// Convert JS developer friendly players to the JSON format get5 uses
-		const team1Players: Get5PlayersWithEnforcedNames = {};
+		const team1Players: StringKVObject = {};
 		for (const player of this.teams.a.players) {
 			team1Players[player.steamId] = player.username ? player.username : '';
 		}
-		const team2Players: Get5PlayersWithEnforcedNames = {};
+		const team2Players: StringKVObject = {};
 		for (const player of this.teams.b.players) {
 			team2Players[player.steamId] = player.username ? player.username : '';
 		}
@@ -219,7 +219,7 @@ export default class Get5Config {
 		};
 
 		// Convert cvars to get5 readdable format
-		const cvars: Get5MatchConfigCvars = {};
+		const cvars: StringKVObject = {};
 		for (const { command, value } of this.cvars) {
 			cvars[command] = `${value}`;
 		}

@@ -1,6 +1,6 @@
 {
   	"name": "get5config",
-  	"version": "1.0.0",
+  	"version": "1.0.7",
   	"license": "MIT",
   	"description": "Module for creating valid get5 match configs.",
   	"author": "Demetrius",
@@ -15,8 +15,10 @@
   	"main": "build/index.js",
   	"type": "module",
   	"scripts": {
-  	  	"build": "tsc"
+  	  	"build": "tsc",
+		"prepare": "npm run build"
   	},
+	"files": ["src/**/*"],
   	"devDependencies": {
   	  	"@types/steamid": "^2.0.1",
   	  	"@typescript-eslint/eslint-plugin": "^5.21.0",

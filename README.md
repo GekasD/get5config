@@ -19,7 +19,7 @@ const get5Config = new Get5Config()
 	.setSideType('always_knife')
 	.setMaps(['de_vertigo', 'de_nuke', 'de_mirage'])
 	.setTeams({
-		a: {
+		team1: {
 			name: 'Ninjas In Pyjamas',
 			players: [
 				{ steamId: 'STEAM_0:1:36953343', username: 'REZ' },
@@ -29,7 +29,7 @@ const get5Config = new Get5Config()
 				{ steamId: 'STEAM_0:1:89281373', username: 'Brollan' }
 			]
 		},
-		b: {
+		team2: {
 			name: 'FaZe Clan',
 			players: [
 				{ steamId: 'STEAM_0:1:18542739', username: 'rain' },

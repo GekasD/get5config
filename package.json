@@ -1,6 +1,6 @@
 {
   	"name": "get5config",
-  	"version": "1.1.1",
+  	"version": "2.0.0",
   	"license": "MIT",
   	"description": "Module for creating valid get5 match configs.",
   	"author": "Demetrius",

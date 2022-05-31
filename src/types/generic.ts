@@ -1,0 +1,1 @@
+export type StringKVObject = { [key: string]: string };
